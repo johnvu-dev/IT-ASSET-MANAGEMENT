@@ -1,0 +1,11 @@
+<!-- views/register.ejs -->
+<%- include('header') -%>
+    <%- include('navbar_1header') -%>
+    <h1>Registration</h1>
+    <form method="POST" action="/auth/register">
+      <input type="text" name="username" placeholder="Username" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <button type="submit">Register</button>
+    </form>
+    <%- include('navbar_2footer') -%>
+<%- include('footer') -%>

@@ -1,4 +1,10 @@
 // db.js
+/**
+ * This function does connect to mysql.
+ *
+ * @param {type} parameters The parameters to the function.
+ * @returns {type} The return value of the function.
+ */
 const Sequelize = require('sequelize');
 
 const sequelize = new Sequelize('testdb', 'root', 'Miras2021!', {

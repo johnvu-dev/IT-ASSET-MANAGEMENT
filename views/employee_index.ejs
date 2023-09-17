@@ -1,11 +1,11 @@
 <!-- views/index.ejs -->
 <%- include('header') -%>
     <%- include('navbar_1header') -%>
-    <h1>Task List</h1>
+    <h1>Employee List</h1>
     <ul>
-        <% tasks.forEach(task => { %>
+        <% employees.forEach(task => { %>
             <li>
-                <%= task.title %> - <%= task.description %>
+                <%= task.first_name %> - <%= task.last_name %>
                 <a href="/edit/<%= task.id %>">Edit</a>
                 <a href="/delete/<%= task.id %>" onclick="return confirm('Are you sure you want to delete this task?')">Delete</a>
             </li>
