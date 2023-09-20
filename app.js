@@ -21,6 +21,7 @@ var session = require('express-session');
 
 const taskController = require('./controllers/taskController');
 const employeeController = require('./controllers/employeeController');
+const categoriesController = require('./controllers/categoriesController');
 
 const bodyParser = require('body-parser'); // Add this line
 const sequelize = require('./db');
@@ -79,6 +80,8 @@ app.post('/employee/add', employeeController.add);
 app.get('/employee/edit/:id', employeeController.editForm);
 app.post('/employee/edit/:id', employeeController.edit);
 app.get('/employee/delete/:id', employeeController.delete);
+
+app.get('/categories', categoriesController.index);
 
 //DEFAUT CODE
 app.use(logger('dev'));

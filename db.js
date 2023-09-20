@@ -7,7 +7,7 @@
  */
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('testdb', 'root', 'Miras2021!', {
+const sequelize = new Sequelize('itassetmgm', 'root', 'Miras2021!', {
     host: 'localhost',
     dialect: 'mysql',
 });
