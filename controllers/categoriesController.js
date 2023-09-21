@@ -21,52 +21,52 @@ const categoryController = {
         }
     },
 
-    // addForm: (req, res) => {
-    //     res.render('add');
-    // },
+    addForm: (req, res) => {
+        res.render('categories_add');
+    },
 
-    // add: async (req, res) => {
-    //     const { title, description } = req.body;
-    //     try {
-    //         await Task.create({ title, description });
-    //         res.redirect('/task');
-    //     } catch (error) {
-    //         console.error(error);
-    //         res.status(500).send('Internal Server Error');
-    //     }
-    // },
+    add: async (req, res) => {
+        const { name, category_type } = req.body;
+        try {
+            await Categories.create({ name, category_type });
+            res.redirect('/categories');
+        } catch (error) {
+            console.error(error);
+            res.status(500).send('Internal Server Error');
+        }
+    },
 
-    // editForm: async (req, res) => {
-    //     const { id } = req.params;
-    //     try {
-    //         const task = await Task.findByPk(id);
-    //         if (task) {
-    //             res.render('edit', { task });
-    //         } else {
-    //             res.redirect('/task');
-    //         }
-    //     } catch (error) {
-    //         console.error(error);
-    //         res.status(500).send('Internal Server Error');
-    //     }
-    // },
+    editForm: async (req, res) => {
+        const { id } = req.params;
+        try {
+            const Category = await Categories.findByPk(id);
+            if (Category) {
+                res.render('categories_edit', { Category });
+            } else {
+                res.redirect('/categories');
+            }
+        } catch (error) {
+            console.error(error);
+            res.status(500).send('Internal Server Error');
+        }
+    },
 
-    // edit: async (req, res) => {
-    //     const { id } = req.params;
-    //     const { title, description } = req.body;
-    //     try {
-    //         const task = await Task.findByPk(id);
-    //         if (task) {
-    //             await task.update({ title, description });
-    //             res.redirect('/task');
-    //         } else {
-    //             res.redirect('/task');
-    //         }
-    //     } catch (error) {
-    //         console.error(error);
-    //         res.status(500).send('Internal Server Error');
-    //     }
-    // },
+    edit: async (req, res) => {
+        const { id } = req.params;
+        const { name, category_type } = req.body;
+        try {
+            const Category = await Categories.findByPk(id);
+            if (Category) {
+                await Categories.update({ name, category_type });
+                res.redirect('/categories');
+            } else {
+                res.redirect('/categories');
+            }
+        } catch (error) {
+            console.error(error);
+            res.status(500).send('Internal Server Error');
+        }
+    },
 
     // delete: async (req, res) => {
     //     const { id } = req.params;

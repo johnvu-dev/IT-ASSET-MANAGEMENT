@@ -2,12 +2,12 @@
 <%- include('header') -%>
     <%- include('navbar_1header') -%>
     <h1>Add Task</h1>
-    <form action="/add" method="post">
+    <form action="/categories/add" method="post">
         <label for="title">Title:</label>
-        <input type="text" id="title" name="title" required>
+        <input type="text" id="name" name="name" required>
         <br>
         <label for="description">Description:</label>
-        <textarea id="description" name="description" required></textarea>
+        <textarea id="category_type" name="category_type" required></textarea>
         <br>
         <button type="submit">Add Task</button>
     </form>

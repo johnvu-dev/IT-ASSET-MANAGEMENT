@@ -82,13 +82,18 @@ app.post('/employee/edit/:id', employeeController.edit);
 app.get('/employee/delete/:id', employeeController.delete);
 
 app.get('/categories', categoriesController.index);
+app.get('/categories/add', categoriesController.addForm);
+app.post('/categories/add', categoriesController.add);
+app.get('/categories/edit/:id', categoriesController.editForm);
+app.post('/categories/edit/:id', categoriesController.edit);
 
 //DEFAUT CODE
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname,'..', 'src'))); //lấy về thư mục gốc
 
 //app.use('/', indexRouter);
 // app.use('/users', usersRouter);
