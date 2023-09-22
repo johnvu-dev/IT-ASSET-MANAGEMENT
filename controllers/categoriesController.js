@@ -54,10 +54,14 @@ const categoryController = {
     edit: async (req, res) => {
         const { id } = req.params;
         const { name, category_type } = req.body;
+        //var values = req.body;
         try {
+            // var condition = { where :{id} }; 
+            // options = { multi: true };
             const Category = await Categories.findByPk(id);
             if (Category) {
-                await Categories.update({ name, category_type });
+                await Category.update({ name, category_type }); //err at 20230922
+                //await Category.update({ values, condition, options });
                 res.redirect('/categories');
             } else {
                 res.redirect('/categories');

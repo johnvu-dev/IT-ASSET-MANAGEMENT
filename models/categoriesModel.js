@@ -16,10 +16,10 @@ const Categories = sequelize.define('Categories', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    user_id: {
-        type: DataTypes.INTEGER
+    // user_id: {
+    //     type: DataTypes.INTEGER
 
-    }
+    // }
 }, {
     tableName: 'strx_categories',
     timestamps: false, // Disable timestamps for this example
