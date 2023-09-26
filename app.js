@@ -86,6 +86,7 @@ app.get('/categories/add', categoriesController.addForm);
 app.post('/categories/add', categoriesController.add);
 app.get('/categories/edit/:id', categoriesController.editForm);
 app.post('/categories/edit/:id', categoriesController.edit);
+app.get('/categories/delete/:id', categoriesController.delete);
 
 //DEFAUT CODE
 app.use(logger('dev'));

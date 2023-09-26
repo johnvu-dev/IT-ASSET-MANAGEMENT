@@ -72,21 +72,21 @@ const categoryController = {
         }
     },
 
-    // delete: async (req, res) => {
-    //     const { id } = req.params;
-    //     try {
-    //         const task = await Task.findByPk(id);
-    //         if (task) {
-    //             await task.destroy();
-    //             res.redirect('/task');
-    //         } else {
-    //             res.redirect('/task');
-    //         }
-    //     } catch (error) {
-    //         console.error(error);
-    //         res.status(500).send('Internal Server Error');
-    //     }
-    // }
+    delete: async (req, res) => {
+        const { id } = req.params;
+        try {
+            const Category = await Categories.findByPk(id);
+            if (Category) {
+                await Category.destroy();
+                res.redirect('/categories');
+            } else {
+                res.redirect('/categories');
+            }
+        } catch (error) {
+            console.error(error);
+            res.status(500).send('Internal Server Error');
+        }
+    }
 };
 
 module.exports = categoryController;
