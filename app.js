@@ -21,7 +21,8 @@ var session = require('express-session');
 
 const taskController = require('./controllers/taskController');
 const employeeController = require('./controllers/employeeController');
-const categoriesController = require('./controllers/categoriesController');
+//work with categoriesController_old
+// const categoriesController = require('./controllers/categoriesController');
 
 const bodyParser = require('body-parser'); // Add this line
 const sequelize = require('./db');
@@ -35,8 +36,12 @@ app.use(session({
   secret: 'shhhh, very secret'
 }));
 
-app.use('/auth', require('./controllers/authController'));
 app.use('/api/v2', require('./controllers/api_v2'));
+app.use('/auth', require('./controllers/authController'));
+//work with categoriesController_new
+//improve viewer
+app.use('/categories', require('./controllers/categoriesController'));
+
 
 // view engine setup: JADE
 //app.set('views', path.join(__dirname, 'views'));
@@ -81,12 +86,13 @@ app.get('/employee/edit/:id', employeeController.editForm);
 app.post('/employee/edit/:id', employeeController.edit);
 app.get('/employee/delete/:id', employeeController.delete);
 
-app.get('/categories', categoriesController.index);
-app.get('/categories/add', categoriesController.addForm);
-app.post('/categories/add', categoriesController.add);
-app.get('/categories/edit/:id', categoriesController.editForm);
-app.post('/categories/edit/:id', categoriesController.edit);
-app.get('/categories/delete/:id', categoriesController.delete);
+//work with categoriesController_old
+// app.get('/categories', categoriesController.index);
+// app.get('/categories/add', categoriesController.addForm);
+// app.post('/categories/add', categoriesController.add);
+// app.get('/categories/edit/:id', categoriesController.editForm);
+// app.post('/categories/edit/:id', categoriesController.edit);
+// app.get('/categories/delete/:id', categoriesController.delete);
 
 //DEFAUT CODE
 app.use(logger('dev'));

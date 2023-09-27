@@ -1,6 +1,6 @@
 <!-- views/index.ejs -->
 <%- include('header') -%>
-    <%- include('navbar_1header_login') -%>
+    <%- include('navbar_1header') -%>
     <h1>Add Task</h1>
     <form action="/categories/add" method="post">
 
@@ -9,15 +9,14 @@
         <br>
         <label for="description">Description:</label>
         
-        <select id="category_type"  name="category_type">
+        <select name="category_type">
             <% for (const fruit of CategoryType) { %>
               <option value="<%= fruit.category_type %>"><%= fruit.category_type %></option>
             <% } %>
         </select>
         <br>
-        <input type="submit" value="Add New">
-        
+        <button type="submit">Add Task</button>
     </form>
-    <a href="/categories">Back to Categories</a>
+    <a href="/">Back to Task List</a>
     <%- include('navbar_2footer') -%>
 <%- include('footer') -%>
