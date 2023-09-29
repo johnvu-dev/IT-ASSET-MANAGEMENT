@@ -100,12 +100,13 @@ apiv1.post('/add', async (req, res) => {
 });
 
 
-apiv1.get('/edit', async (req, res) => {
+apiv1.get('/edit/:id', async (req, res) => {
     const { id } = req.params;
     try {
         const Category = await Categories.findByPk(id);
+        const CategoryType = await CategoryTypes.findAll();
         if (Category) {
-            res.render('categories_edit', { Category });
+            res.render('categories_edit', { Category, CategoryType });
         } else {
             res.redirect('/categories');
         }
@@ -114,6 +115,45 @@ apiv1.get('/edit', async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
+
+apiv1.post('/edit/:id', async (req, res) => {
+        const { id } = req.params;
+        const { name, category_type } = req.body;
+        //var values = req.body;
+        try {
+            // var condition = { where :{id} }; 
+            // options = { multi: true };
+            const Category = await Categories.findByPk(id);
+            if (Category) {
+                await Category.update({ name, category_type }); //err at 20230922
+                //await Category.update({ values, condition, options });
+                res.redirect('/categories');
+            } else {
+                res.redirect('/categories');
+            }
+        } catch (error) {
+            console.error(error);
+            res.status(500).send('Internal Server Error');
+        }
+});
+
+apiv1.get('/delete/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        const Category = await Categories.findByPk(id);
+        if (Category) {
+            await Category.destroy();
+            res.redirect('/categories');
+        } else {
+            res.redirect('/categories');
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+    
+});
+
 // const categoryController = {
     // index: async (req, res) => {
     //     try {
