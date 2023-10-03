@@ -41,6 +41,7 @@ app.use('/auth', require('./controllers/authController'));
 //work with categoriesController_new
 //improve viewer
 app.use('/categories', require('./controllers/categoriesController'));
+app.use('/Locations', require('./controllers/locationsController'));
 
 
 // view engine setup: JADE

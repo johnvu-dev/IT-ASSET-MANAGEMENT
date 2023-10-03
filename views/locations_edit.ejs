@@ -1,0 +1,16 @@
+<!-- views/edit.ejs -->
+<%- include('header') -%>
+    <%- include('navbar_1header_login') -%>
+    <h1>Edit Location</h1>
+    <form action="/locations/edit/<%= Location.id %>" method="post">
+        <label for="title">Title:</label>
+        <input type="text" id="name" name="name" value="<%= Location.name %>" required>
+        <br>
+        <label for="description">Description:</label>
+
+        <br>
+        <button type="submit">Save Changes</button>
+    </form>
+    <a href="/locations">Back to locations</a>
+    <%- include('navbar_2footer') -%>
+<%- include('footer') -%>

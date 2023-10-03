@@ -1,0 +1,33 @@
+<!-- views/index.ejs -->
+<%- include('header') -%>
+    <%- include('navbar_1header') -%>
+    <h1>Locations List</h1>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+          </tr>
+        </thead>
+        <tbody>
+
+   
+        <% Location.forEach(varView => { %>
+            <tr>
+    
+                <td><%= varView.name %></td>
+                <td><%= varView.parent_id %></td>
+                <td>
+
+                <a href="/locations/edit/<%= varView.id %>">Edit</a>
+                <a href="/locations/delete/<%= varView.id %>" onclick="return confirm('Are you sure you want to delete this Category?')">Delete</a>
+                </td>
+            </tr>
+        <% }); %>
+        </tbody>
+    </table>
+    <a href="/locations/add">Add New Category</a>
+    <%- include('navbar_2footer') -%>
+<%- include('footer') -%>
