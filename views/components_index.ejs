@@ -1,0 +1,33 @@
+<!-- views/index.ejs -->
+<%- include('header') -%>
+    <%- include('navbar_1header') -%>
+    <h1>Components List</h1>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+          </tr>
+        </thead>
+        <tbody>
+
+   
+        <% Component.forEach(varView => { %>
+            <tr>
+    
+                <td><%= varView.name %></td>
+                <td><%= varView.category_type %></td>
+                <td>
+
+                <a href="/components/edit/<%= varView.id %>">Edit</a>
+                <a href="/components/delete/<%= varView.id %>" onclick="return confirm('Are you sure you want to delete this Component?')">Delete</a>
+                </td>
+            </tr>
+        <% }); %>
+        </tbody>
+    </table>
+    <a href="/components/add">Add New Category</a>
+    <%- include('navbar_2footer') -%>
+<%- include('footer') -%>
