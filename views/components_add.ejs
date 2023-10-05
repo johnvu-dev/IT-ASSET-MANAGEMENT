@@ -1,0 +1,24 @@
+<!-- views/index.ejs -->
+<%- include('header') -%>
+    <%- include('navbar_1header_login') -%>
+    <h1>Add Components</h1>
+    <form action="/components/add" method="post">
+
+        <label for="title">Title:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+        <label for="description">Category:</label>
+        
+        <select id="category_id"  name="category_id">
+            <% for (const fruit of Category) { %>
+              <option value="<%= fruit.id %>"><%= fruit.name %></option>
+            <% } %>
+        </select>
+        <br>
+
+        <input type="submit" value="Add New">
+        
+    </form>
+    <a href="/components">Back to components</a>
+    <%- include('navbar_2footer') -%>
+<%- include('footer') -%>

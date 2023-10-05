@@ -15,10 +15,13 @@ const Components = sequelize.define('Components', {
     location_id: {
         type: DataTypes.INTEGER,
     },
-    // user_id: {
-    //     type: DataTypes.INTEGER
+    category_id: {
+        type: DataTypes.INTEGER,
+    },
+    user_id: {
+         type: DataTypes.INTEGER
 
-    // }
+    }
 }, {
     tableName: 'strx_components',
     timestamps: false, // Disable timestamps for this example
