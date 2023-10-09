@@ -1,0 +1,33 @@
+<!-- views/index.ejs -->
+<%- include('header') -%>
+    <%- include('navbar_1header') -%>
+    <h1>Accessories List</h1>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+          </tr>
+        </thead>
+        <tbody>
+
+   
+        <% Accessory.forEach(varView => { %>
+            <tr>
+    
+                <td><%= varView.name %></td>
+                <td>A</td>
+                <td>
+
+                <a href="/accessories/edit/<%= varView.id %>">Edit</a>
+                <a href="/accessories/delete/<%= varView.id %>" onclick="return confirm('Are you sure you want to delete this Accessory?')">Delete</a>
+                </td>
+            </tr>
+        <% }); %>
+        </tbody>
+    </table>
+    <a href="/accessories/add">Add New Accessory</a>
+    <%- include('navbar_2footer') -%>
+<%- include('footer') -%>
