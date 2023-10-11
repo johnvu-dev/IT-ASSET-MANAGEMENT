@@ -71,90 +71,91 @@ apiv1.get('/', async function(req, res){
     
   });
 
-// apiv1.get('/add', async (req, res) => {
-//     try {
-//         if (req.session.userId) {
-//             //res.render('dashboard', { username: req.session.username });
-//             const Category = await Categories.findAll();
-//             //console.log(task);
-//             res.render('accessories_add', { Category });
-//             } else {
-//             res.redirect('/auth/login');
-//             }
+apiv1.get('/add', async (req, res) => {
+    try {
+        if (req.session.userId) {
+            //res.render('dashboard', { username: req.session.username });
+            const Category = await Categories.findAll();
+            //console.log(task);
+            res.render('accessories_add', { Category });
+            } else {
+            res.redirect('/auth/login');
+            }
         
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).send('An error occurred');
-//     }
-// });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('An error occurred');
+    }
+});
 
-// apiv1.post('/add', async (req, res) => {
-//     console.log(req.body);
-//     const { name, category_id } = req.body;
-//     try {
-//         await Accessories.create({ name, category_id });
-//         res.redirect('/accessories');
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).send('Internal Server Error');
-//     }
-// });
+apiv1.post('/add', async (req, res) => {
+    console.log(req.body);
+    const { name, category_id } = req.body;
+    try {
+        await Accessories.create({ name, category_id });
+        res.redirect('/accessories');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
 
 
-// apiv1.get('/edit/:id', async (req, res) => {
-//     const { id } = req.params;
-//     try {
-//         const Accessorie = await Accessories.findByPk(id);
-//         const Category = await Categories.findAll();
+apiv1.get('/edit/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        apiv1.use(express.static(path.join(__dirname,'../..', 'src'))); //lấy về thư mục gốc
+        const Accessory = await Accessories.findByPk(id);
+        const Category = await Categories.findAll();
         
-//         if (Accessorie) {
-//             res.render('accessories_edit', { Accessorie, Category });
-//         } else {
-//             res.redirect('/Accessories');
-//         }
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).send('Internal Server Error');
-//     }
-// });
+        if (Accessory) {
+            res.render('accessories_edit', { Accessory, Category });
+        } else {
+            res.redirect('/Accessories');
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
 
-// apiv1.post('/edit/:id', async (req, res) => {
-//         const { id } = req.params;
-//         const { name, category_id } = req.body;
-//         //var values = req.body;
-//         try {
-//             // var condition = { where :{id} }; 
-//             // options = { multi: true };
-//             const Accessorie = await Accessories.findByPk(id);
-//             if (Accessorie) {
-//                 await Accessorie.update({ name, category_id }); //err at 20230922
-//                 //await Category.update({ values, condition, options });
-//                 res.redirect('/accessories');
-//             } else {
-//                 res.redirect('/accessories');
-//             }
-//         } catch (error) {
-//             console.error(error);
-//             res.status(500).send('Internal Server Error');
-//         }
-// });
+apiv1.post('/edit/:id', async (req, res) => {
+        const { id } = req.params;
+        const { name, category_id } = req.body;
+        //var values = req.body;
+        try {
+            // var condition = { where :{id} }; 
+            // options = { multi: true };
+            const Accessorie = await Accessories.findByPk(id);
+            if (Accessorie) {
+                await Accessorie.update({ name, category_id }); //err at 20230922
+                //await Category.update({ values, condition, options });
+                res.redirect('/accessories');
+            } else {
+                res.redirect('/accessories');
+            }
+        } catch (error) {
+            console.error(error);
+            res.status(500).send('Internal Server Error');
+        }
+});
 
-// apiv1.get('/delete/:id', async (req, res) => {
-//     const { id } = req.params;
-//     try {
-//         const Accessorie = await Accessories.findByPk(id);
-//         if (Accessorie) {
-//             await Accessorie.destroy();
-//             res.redirect('/accessories');
-//         } else {
-//             res.redirect('/accessories');
-//         }
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).send('Internal Server Error');
-//     }
+apiv1.get('/delete/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        const Accessorie = await Accessories.findByPk(id);
+        if (Accessorie) {
+            await Accessorie.destroy();
+            res.redirect('/accessories');
+        } else {
+            res.redirect('/accessories');
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
     
-// });
+});
 
 
 module.exports = apiv1;
