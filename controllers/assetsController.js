@@ -105,11 +105,11 @@ apiv1.get('/edit/:id', async (req, res) => {
     const { id } = req.params;
     try {
         apiv1.use(express.static(path.join(__dirname,'../..', 'src'))); //lấy về thư mục gốc
-        const Accessory = await Assets.findByPk(id);
+        const Asset = await Assets.findByPk(id);
         const Category = await Categories.findAll();
         
-        if (Accessory) {
-            res.render('Assets_edit', { Accessory, Category });
+        if (Asset) {
+            res.render('Assets_edit', { Asset, Category });
         } else {
             res.redirect('/assets');
         }
