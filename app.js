@@ -45,6 +45,7 @@ app.use('/locations', require('./controllers/locationsController'));
 app.use('/components', require('./controllers/componentsController'));
 app.use('/accessories', require('./controllers/accessoriesController'));
 app.use('/assets', require('./controllers/assetsController'));
+app.use('/tickets', require('./controllers/ticketsController'));
 
 // view engine setup: JADE
 //app.set('views', path.join(__dirname, 'views'));
